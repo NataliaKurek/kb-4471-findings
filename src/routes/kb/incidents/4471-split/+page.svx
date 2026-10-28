@@ -4,7 +4,7 @@ title: '#4471 · three problems, not one'
 owner: support desk
 status: living
 reviewed: 2026-10-28
-signature: NataliaKurek
+signature: v1.eyJzdWIiOiI1NTIwIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMyMjQzMDMsImV4cCI6MTc5MzMxMDcwM30.aqhtc2w44OYdqjsyCdVKkRmGqOUWHSCswP4J6Udk4sE
 ---
 
 <script>

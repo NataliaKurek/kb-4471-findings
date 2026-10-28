@@ -9,6 +9,6 @@ Support ticket #4471 merged 412 date reports as one known issue. They are three 
 | Dates off by one day (likely time zone) | 5 |
 
 - Issues: one per problem, each with its report count.
-- `src/routes/kb/incidents/4471-split/+page.svx`: the kb page (signed `NataliaKurek`), with `src/lib/kb/CauseSplit.svelte`.
+- `src/routes/kb/incidents/4471-split/+page.svx`: the kb page (signed with the course ticket), with `src/lib/kb/CauseSplit.svelte`.
 - `4471-split.rendered.html`: the page as the desk sees it (static render of the same data).
 - `findings.json`: report ids per problem.
