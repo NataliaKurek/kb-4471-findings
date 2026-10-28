@@ -19,7 +19,8 @@ the merged reports and they are three different problems. The merge happened on 
 ([decision 0001](/kb/decisions/0001-dedupe-by-subject)), and subjects do not say why a date is wrong.
 
 <Callout>
-Not known, not one issue. Fixing the parser closes most of #4471. It does not touch the other two.
+Not one issue. Engineering closed #4471 on 5 October: the parser is fixed and the hint is won't fix.
+Only the one-day move has no outcome yet.
 </Callout>
 
 ## The split
@@ -27,14 +28,14 @@ Not known, not one issue. Fixing the parser closes most of #4471. It does not to
 <CauseSplit ticket={4471} />
 
 1. **parser.** The shared parser reads every date month first, so a day-first tenant's dates come
-   out flipped. This is the bug #4471 describes, and most of the reports are this one.
+   out flipped. This is the bug #4471 describes, and most of the reports are this one. Fixed: `fix(dates): parse dd/mm for eu locales`.
 2. **hint.** Tenants on booking-v3 show `MM/DD/YYYY` under the date field. Their people type month
    first because the form tells them to, and the form reads it the tenant's way. The parser fix
-   does not help. The form hint needs its own ticket.
+   does not help. Engineering will not fix it: booking-v3 is retired.
 3. **one-day move.** The desk read these reports as a date off by one day, not a swap. The
    reports mention one month only, an invite that arrived before the booking, and the same meeting
    on two days for two cities. That looks like a time zone bug. They are filed under `parser` by
-   tenant, so the table below counts them there.
+   tenant, so the table below counts them there. Engineering gave no outcome for them.
 
 ## What the desk's table says
 
