@@ -1,0 +1,53 @@
+---
+layout: runbook
+title: '#4471 · three problems, not one'
+owner: support desk
+status: living
+reviewed: 2026-10-28
+signature: NataliaKurek
+---
+
+<script>
+  import CauseSplit from '#lib/kb/CauseSplit.svelte';
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+[#4471](/kb/incidents/4471) was merged as one date bug with one fix queued. Run `causes.ts` over
+the merged reports and they are three different problems. The merge happened on the subject line
+([decision 0001](/kb/decisions/0001-dedupe-by-subject)), and subjects do not say why a date is wrong.
+
+<Callout>
+Not known, not one issue. Fixing the parser closes most of #4471. It does not touch the other two.
+</Callout>
+
+## The split
+
+<CauseSplit ticket={4471} />
+
+1. **parser.** The shared parser reads every date month first, so a day-first tenant's dates come
+   out flipped. This is the bug #4471 describes, and most of the reports are this one.
+2. **hint.** Tenants on booking-v3 show `MM/DD/YYYY` under the date field. Their people type month
+   first because the form tells them to, and the form reads it the tenant's way. The parser fix
+   does not help. The form hint needs its own ticket.
+3. **one-day move.** The desk read these reports as a date off by one day, not a swap. The
+   reports mention one month only, an invite that arrived before the booking, and the same meeting
+   on two days for two cities. That looks like a time zone bug. They are filed under `parser` by
+   tenant, so the table below counts them there.
+
+## What the desk's table says
+
+<CauseTable ticket={4471} />
+
+## Why intake got it wrong
+
+`intakeTag` is a guess from the reporter's browser. The cause depends on the tenant: its locale and
+the booking form it runs. Read the tag as a hint about the browser, never as the cause.
+
+## Lessons
+
+- A big ticket is a count of reports, not a count of bugs. Check the cause before you merge.
+- When a decision says "merge on subject", add the check that would catch it being wrong.
+
+<RenderStamp {signature} />
